@@ -1,0 +1,95 @@
+<html>
+<head>
+<style>
+#dry {
+	position:fixed;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border: 0px solid #aaaaaa;
+}
+#wet {
+	position:fixed;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border: 0px solid #aaaaaa;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.column {
+  cursor: move;
+}
+
+
+.column.over {
+  border: 2px dashed #000;
+}
+
+@font-face {
+  font-family: 'MyWebFont';
+  src:url(advent_Extra_Bold.ttf);
+}
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+.underline {
+    padding-bottom: 10px;
+    border-bottom: grey 1px solid;
+	width:200;
+} 
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id); 
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+
+    ev.target.appendChild(document.getElementById(data));
+	
+}
+</script>
+</head>
+<body>
+
+<p class="underline">Start your waste segrigation</p>
+
+<div style="width:100%; height:70%; border:solid 2px; background-color:#000" >
+<p align="center" style="color:#FFF;font-family:Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', sans-serif; font-size:60px">Start your waste segrigation</p>
+
+<div align="center" style="margin-top:40; float:left;margin-left:200">
+<div id="dry" ondrop="drop(event)" ondragover="allowDrop(event)" onmousedown="return false" ondrop="return false" style="background-image:url(https://secured-static.greenpeace.org/india/Global/india/image/2017/BIN-1.png); background-size:cover;">
+</div>
+<div align="center" id="waste" style="position:fixed; margin-left:200;">
+<img id="dry1" class="column" src="https://secured-static.greenpeace.org/india/Global/india/image/2017/web-page-look-1.png" style="overflow:hidden" draggable="true"  ondragstart="drag(event)" width="115" height="100" style="border-radius:50%;">
+<img id="dry2" class="column" src="https://secured-static.greenpeace.org/india/Global/india/image/2017/web-page-look-2.png" style="overflow:hidden" draggable="true" ondragstart="drag(event)" width="115" height="100" style="border-radius:50%;">
+<img id="wet1" class="column" src="https://secured-static.greenpeace.org/india/Global/india/image/2017/web-page-look-3.png" style="overflow:hidden" draggable="true" ondragstart="drag(event)" width="115" height="100" style="border-radius:50%;">
+<img id="wet2" class="column" src="https://secured-static.greenpeace.org/india/Global/india/image/2017/web-page-look-4.png" style="overflow:hidden" draggable="true" ondragstart="drag(event)" width="115" height="100" style="border-radius:50%;">
+</div>
+<div id="wet" ondrop="drop(event)" ondragover="allowDrop(event)" onmousedown="return false" ondrop="return false" style="background-image:url(https://secured-static.greenpeace.org/india/Global/india/image/2017/BIN-2.png);  background-size:cover; float:right; margin-left:680" >
+</div>
+</div>
+
+
+
+</body>
+</html>
